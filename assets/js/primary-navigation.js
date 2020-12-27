@@ -9,7 +9,7 @@
  *
  * @param {Element} el - The element.
  * @param {boolean} withListeners - Whether we want to add/remove listeners or not.
- * @since 1.0.0
+ * @since Twenty Twenty-One 1.0
  */
 function twentytwentyoneToggleAriaExpanded( el, withListeners ) {
 	if ( 'true' !== el.getAttribute( 'aria-expanded' ) ) {
@@ -67,7 +67,7 @@ function twentytwentyoneSubmenuPosition( li ) {
  *
  * @param {Element} el - The element.
  */
-function twentytwentyoneExpandSubMenu( el ) { // eslint-disable-line no-unused-vars
+function twentytwentyoneExpandSubMenu( el ) { // jshint ignore:line
 	// Close other expanded items.
 	el.closest( 'nav' ).querySelectorAll( '.sub-menu-toggle' ).forEach( function( button ) {
 		if ( button !== el ) {
@@ -147,6 +147,23 @@ function twentytwentyoneExpandSubMenu( el ) { // eslint-disable-line no-unused-v
 			// If there are no elements in the menu, don't move the focus
 			if ( tabKey && firstEl === lastEl ) {
 				event.preventDefault();
+			}
+		} );
+
+		/**
+		 * Close menu and scroll to anchor when an anchor link is clicked.
+		 * Adapted from TwentyTwenty.
+		 */
+		document.addEventListener( 'click', function( event ) {
+			// If target onclick is <a> with # within the href attribute
+			if ( event.target.hash && event.target.hash.includes( '#' ) ) {
+				wrapper.classList.remove( id + '-navigation-open', 'lock-scrolling' );
+				twentytwentyoneToggleAriaExpanded( mobileButton );
+				// Wait 550 and scroll to the anchor.
+				setTimeout(function () {
+					var anchor = document.getElementById(event.target.hash.slice(1));
+					anchor.scrollIntoView();
+				}, 550);
 			}
 		} );
 

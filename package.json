@@ -1,6 +1,6 @@
 {
 	"name": "twentytwentyone",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Default WP Theme",
 	"author": "The WordPress Contributors",
 	"license": "GPL-2.0-or-later",
@@ -14,7 +14,6 @@
 	"homepage": "https://wordpress.org/themes/twentytwentyone/",
 	"devDependencies": {
 		"@wordpress/browserslist-config": "^2.2.2",
-		"@wordpress/env": "^2.1.0",
 		"@wordpress/eslint-plugin": "^7.3.0",
 		"autoprefixer": "^9.5.1",
 		"chokidar-cli": "^2.1.0",
@@ -63,9 +62,6 @@
 		"build": "run-s \"build:*\"",
 		"watch": "chokidar \"**/*.scss\" -c \"npm run build\" --initial",
 		"lint:scss": "stylelint **/*.scss",
-		"lint:js": "eslint assets/js",
-		"lint-fix:scss": "stylelint **/*.scss --fix",
-		"lint-fix:js": "eslint assets/js --fix",
-		"wp-env": "wp-env"
+		"lint-fix:scss": "stylelint **/*.scss --fix"
 	}
 }
